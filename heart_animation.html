@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Collector Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+        }
+        .score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="score">Score: <span id="score">0</span></div>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+    const canvas = document.getElementById('gameCanvas');
+const context = canvas.getContext('2d');
+const scoreElement = document.getElementById('score');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let score =0;
+
+const player = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    width: 30,
+    height: 30,
+    speed: 10,  // Increased speed
+    color: '#00bfff'
+};
+
+let hearts = [];
+
+function getRandomColor() {
+    const colors = ['#FF69B4', '#FF1493', '#DB7093', '#C71585', '#FF6347'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function createHeart() {
+    return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: 20,
+        color: getRandomColor()
+    };
+}
+
+function drawHeart(heart) {
+    context.fillStyle = heart.color;
+    context.beginPath();
+    context.arc(heart.x, heart.y, heart.size, 0, Math.PI * 2);
+    context.closePath();
+    context.fill();
+}
+
+function drawPlayer() {
+    context.fillStyle = player.color;
+    context.fillRect(player.x, player.y, player.width, player.height);
+}
+
+function movePlayer(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            player.y -= player.speed;
+            break;
+        case 'ArrowDown':
+            player.y += player.speed;
+            break;
+        case 'ArrowLeft':
+            player.x -= player.speed;
+            break;
+        case 'ArrowRight':
+            player.x += player.speed;
+            break;
+    }
+}
+
+function updateGame() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    drawPlayer();
+    hearts.forEach((heart, index) => {
+        drawHeart(heart);
+        if (
+            player.x < heart.x + heart.size &&
+            player.x + player.width > heart.x - heart.size &&
+            player.y < heart.y + heart.size &&
+            player.y + player.height > heart.y - heart.size
+        ) {
+            hearts.splice(index, 1);
+            score += 1;
+            scoreElement.textContent = score;
+            hearts.push(createHeart());
+        }
+    });
+    requestAnimationFrame(updateGame);
+}
+
+document.addEventListener('keydown', movePlayer);
+
+// Initialize hearts
+for (let i = 0; i < 5; i++) {
+    hearts.push(createHeart());
+}
+
+updateGame();
+
+    </script>
+</body>
+</html>
+

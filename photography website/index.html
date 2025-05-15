@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Photography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://via.placeholder.com/32" type="image/x-icon"> <!-- Replace with your favicon -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Aditya Photography</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Where Light Meets Art</h1>
+            <p>Capturing Moments by Aditya</p>
+            <a href="#gallery" class="cta-btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="nature">Nature</button>
+            <button class="filter-btn" data-category="urban">Urban</button>
+            <button class="filter-btn" data-category="portrait">Portrait</button>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Photos will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">×</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Photo">
+            <div id="lightbox-info"></div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Aditya</h2>
+        <div class="about-content">
+            <img src="https://via.placeholder.com/200" alt="Aditya" class="about-img">
+            <p>Hi, I’m Aditya, a passionate photographer who finds beauty in the everyday. Whether it’s the golden hues of a sunset or the quiet details of a city street, I love freezing moments in time. With my camera in hand, I’ve explored countless stories, and I’m excited to share my world with you!</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <h2>Dashboard</h2>
+        <div class="dashboard-content">
+            <form id="add-photo-form" class="add-photo-form">
+                <input type="text" id="photo-url" placeholder="Photo URL" required>
+                <input type="text" id="photo-title" placeholder="Title" required>
+                <input type="text" id="photo-desc" placeholder="Description" required>
+                <input type="text" id="photo-date" placeholder="Date (e.g., 2025-04-03)" required>
+                <input type="text" id="photo-location" placeholder="Location" required>
+                <select id="photo-category" required>
+                    <option value="nature">Nature</option>
+                    <option value="urban">Urban</option>
+                    <option value="portrait">Portrait</option>
+                </select>
+                <button type="submit" class="dash-btn">Add Photo</button>
+            </form>
+            <button class="dash-btn" onclick="alert('Stats feature coming soon!')">View Stats</button>
+            <button class="dash-btn" onclick="alert('Edit profile feature coming soon!')">Edit Profile</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="dash-btn">Send</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Aditya Photography</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

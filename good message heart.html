@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            overflow: hidden;
+        }
+
+        .heart-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .heart {
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background: #ff6f91;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            animation: beat 1.2s infinite ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background: #ff6f91;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .heart::before {
+            left: 50px;
+            transform: rotate(90deg);
+        }
+
+        .heart::after {
+            transform: rotate(0deg);
+        }
+
+        .heart:nth-child(1) {
+            top: 50px;
+            left: 50px;
+            animation-delay: 0.2s;
+        }
+
+        .heart:nth-child(2) {
+            top: 200px;
+            left: 250px;
+            animation-delay: 0.4s;
+        }
+
+        .heart:nth-child(3) {
+            top: 300px;
+            left: 100px;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.2);
+            }
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 3s infinite;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .stars {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        .stars:nth-child(4) { top: 20%; left: 10%; animation-delay: 0.1s; }
+        .stars:nth-child(5) { top: 30%; left: 80%; animation-delay: 0.3s; }
+        .stars:nth-child(6) { top: 70%; left: 20%; animation-delay: 0.5s; }
+        .stars:nth-child(7) { top: 10%; left: 60%; animation-delay: 0.7s; }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="message">You Are My Everything</div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffe6f2, #ffb3d9);
+    font-family: 'Patrick Hand', cursive;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    color: #333;
+    position: relative;
+}
+
+.title {
+    font-size: 2.5em;
+    color: #ff6699;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background: #ff4d94;
+    position: relative;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.heart:hover {
+    transform: scale(1.1) rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background: #ff4d94;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -50px;
+    left: 0;
+}
+
+.heart:after {
+    left: 50px;
+    top: 0;
+}
+
+.click-me {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.card {
+    perspective: 1000px;
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background: #ff99cc;
+}
+
+.card-back {
+    background: rgba(255, 255, 255, 0.9);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message {
+    font-size: 1.5em;
+    color: #ff3385;
+    text-align: center;
+    padding: 20px;
+}
+
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.heart.clicked {
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.2) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}
