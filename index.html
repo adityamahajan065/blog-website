@@ -1,61 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyScribble - Home</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyScribble - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .writing-icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+      color: #555;
+    }
+    .post-content h3, .post-content h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">MyScribble</div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="categories.html">Categories</a></li>
-                <li><a href="archive.html">Archive</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar">
+      <div class="logo">MyScribble</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button id="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    </nav>
+  </header>
 
-    <main>
-        <section id="featured">
-            <h2>Featured Post</h2>
-            <article class="featured-post">
-                <h3><a href="ai-writing.html">The Rise of AI in Writing</a></h3>
-                <p class="meta">Posted on March 5, 2025 | Category: Technology</p>
-                <p>Explore how AI is transforming the writing industry and what it means for future bloggers...</p>
-            </article>
-        </section>
-        <article class="featured-post">
-            <h3><a href="cybersecurity.html">Cybersecurity </a></h3>
-            <p class="meta">Posted on May 13, 2025 | Category: Cybersecurity</p>
-            <p>Learn about the biggest cyber dangers this year and how to stay safe online...</p>
-        </article>
+  <main>
+    <section class="hero">
+      <div class="hero-content fade-in">
+        <h1>Welcome to MyScribble</h1>
+        <p>Your daily dose of creativity, tech, and tips.</p>
+      </div>
+      <img class="hero-img fade-in" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80" alt="Writing theme background" />
+    </section>
 
-        <section id="home">
-            <h1>Latest Blog Posts</h1>
-            <article class="blog-post">
-                <h2><a href="blogging-2025.html">How to Start Blogging in 2025</a></h2>
-                <p class="meta">Posted on March 13, 2025 | Category: Blogging</p>
-                <p>Learn the basics of starting a blog with this step-by-step guide...</p>
-            </article>
-            <article class="blog-post">
-                <h2><a href="tools.html">Top 5 Tools for Writers</a></h2>
-                <p class="meta">Posted on March 10, 2025 | Category: Tools</p>
-                <p>Discover tools that can enhance your writing productivity...</p>
-            </article>
-        </section>
-    </main>
+    <section id="featured">
+      <h2>Featured Posts</h2>
 
-    <footer>
-        <p>© 2025 MyScribble. All rights reserved.</p>
-    </footer>
+      <article class="featured-post fade-in">
+        <div class="post-content">
+          <h3>
+            <span class="writing-icon" aria-hidden="true">
+              <!-- Tech Gear Icon SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <a href="ai-writing.html">The Rise of AI in Writing</a>
+          </h3>
+          <p class="meta">Posted on March 5, 2025 | Category: Technology</p>
+          <p>Explore how AI is transforming the writing industry and what it means for future bloggers...</p>
+        </div>
+      </article>
 
-    <script src="script.js"></script>
+      <article class="featured-post fade-in">
+        <div class="post-content">
+          <h3>
+            <span class="writing-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <a href="cybersecurity.html">Cybersecurity in 2025</a>
+          </h3>
+          <p class="meta">Posted on May 13, 2025 | Category: Cybersecurity</p>
+          <p>Learn about the biggest cyber dangers this year and how to stay safe online...</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="home">
+      <h2>Latest Blog Posts</h2>
+
+      <article class="blog-post fade-in">
+        <div class="post-content">
+          <h2>
+            <span class="writing-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <a href="blogging-2025.html">How to Start Blogging in 2025</a>
+          </h2>
+          <p class="meta">Posted on March 13, 2025 | Category: Blogging</p>
+          <p>Learn the basics of starting a blog with this step-by-step guide...</p>
+        </div>
+      </article>
+
+      <article class="blog-post fade-in">
+        <div class="post-content">
+          <h2>
+            <span class="writing-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <a href="tech-trends.html">Top Tech Trends in 2025</a>
+          </h2>
+          <p class="meta">Posted on April 10, 2025 | Category: Technology</p>
+          <p>A detailed look at emerging technologies shaping the future of blogging and online media...</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyScribble. All rights reserved.</p>
+  </footer>
 </body>
 </html>
