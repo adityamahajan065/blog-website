@@ -124,5 +124,64 @@
   <footer>
     <p>&copy; 2025 MyScribble. All rights reserved.</p>
   </footer>
+
+  <script>
+  // Theme toggle with system preference support
+  const toggleBtn = document.getElementById('dark-mode-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const currentTheme = localStorage.getItem('theme');
+
+  function applyTheme(theme) {
+    if(theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = '☀️'; // sun icon for light mode
+    } else if(theme === 'light') {
+      document.documentElement.removeAttribute('data-theme');
+      toggleBtn.textContent = '🌙'; // moon icon for dark mode
+    } else {
+      // system preference
+      if(prefersDark.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        toggleBtn.textContent = '🌙';
+      }
+    }
+  }
+
+  // On load apply saved theme or system
+  applyTheme(currentTheme);
+
+  toggleBtn.addEventListener('click', () => {
+    let theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      localStorage.setItem('theme', 'light');
+      applyTheme('light');
+    } else if (theme === 'light') {
+      localStorage.removeItem('theme'); // revert to system
+      applyTheme(null);
+    } else {
+      localStorage.setItem('theme', 'dark');
+      applyTheme('dark');
+    }
+  });
+
+  // React to system preference change
+  prefersDark.addEventListener('change', e => {
+    if(!localStorage.getItem('theme')) {
+      applyTheme(null);
+    }
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+</script>
+
 </body>
 </html>
