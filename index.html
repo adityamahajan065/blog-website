@@ -27,10 +27,10 @@
       <div class="logo">MyScribble</div>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="archive.html">Archive</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="categories.html"class="active">Categories</a></li>
+        <li><a href="archieve.html" class="active">Archieve</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
       <button id="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
       <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
@@ -123,64 +123,66 @@
 
   <footer>
     <p>&copy; 2025 MyScribble. All rights reserved.</p>
+ 
   </footer>
-
   <script>
-  // Theme toggle with system preference support
-  const toggleBtn = document.getElementById('dark-mode-toggle');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  const currentTheme = localStorage.getItem('theme');
+   document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const links = document.querySelectorAll('.nav-links a');
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const sunIcon = '☀️';
+      const moonIcon = '🌙';
 
-  function applyTheme(theme) {
-    if(theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      toggleBtn.textContent = '☀️'; // sun icon for light mode
-    } else if(theme === 'light') {
-      document.documentElement.removeAttribute('data-theme');
-      toggleBtn.textContent = '🌙'; // moon icon for dark mode
-    } else {
-      // system preference
-      if(prefersDark.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggleBtn.textContent = '☀️';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        toggleBtn.textContent = '🌙';
+      // Mobile menu toggle
+      menuToggle?.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Close menu on link click
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', false);
+        });
+      });
+
+      // Set dark mode
+      const setDarkMode = (enabled) => {
+        if (enabled) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        if (darkModeToggle) {
+          darkModeToggle.textContent = enabled ? sunIcon : moonIcon;
+          darkModeToggle.setAttribute('aria-label', enabled ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+        localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+      };
+
+      // Load preference
+      const storedPref = localStorage.getItem('darkMode');
+      if (storedPref === 'enabled' || (!storedPref && window.matchMedia?.('(prefers-color-scheme: dark)').matches)) {
+        setDarkMode(true);
       }
-    }
-  }
 
-  // On load apply saved theme or system
-  applyTheme(currentTheme);
+      // Toggle dark mode
+      darkModeToggle?.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        setDarkMode(!isDark);
+      });
 
-  toggleBtn.addEventListener('click', () => {
-    let theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      localStorage.setItem('theme', 'light');
-      applyTheme('light');
-    } else if (theme === 'light') {
-      localStorage.removeItem('theme'); // revert to system
-      applyTheme(null);
-    } else {
-      localStorage.setItem('theme', 'dark');
-      applyTheme('dark');
-    }
-  });
-
-  // React to system preference change
-  prefersDark.addEventListener('change', e => {
-    if(!localStorage.getItem('theme')) {
-      applyTheme(null);
-    }
-  });
-
-  // Mobile menu toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
+      // Accessibility: ESC key closes menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          menuToggle?.setAttribute('aria-expanded', false);
+          menuToggle?.focus();
+        }
+      });
+    });
 </script>
 
 </body>
