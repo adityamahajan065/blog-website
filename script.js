@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   const links = document.querySelectorAll('.nav-links a');
-  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const darkToggle = document.getElementById('dark-mode-toggle');
+  const body = document.body;
 
   // Mobile menu toggle
   menuToggle.addEventListener('click', () => {
@@ -16,22 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Load dark mode preference
+  // Load saved dark mode preference
   if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-    darkModeToggle.textContent = '☀️';
+    body.classList.add('dark-mode');
+    darkToggle.textContent = '☀️'; // sun icon
   }
 
-  // Toggle dark mode on button click
-  darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+  // Dark mode toggle button
+  darkToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
 
-    if (document.body.classList.contains('dark-mode')) {
+    if (body.classList.contains('dark-mode')) {
       localStorage.setItem('darkMode', 'enabled');
-      darkModeToggle.textContent = '☀️';
+      darkToggle.textContent = '☀️';
     } else {
       localStorage.setItem('darkMode', 'disabled');
-      darkModeToggle.textContent = '🌙';
+      darkToggle.textContent = '🌙';
     }
   });
 });
