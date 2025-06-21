@@ -138,35 +138,36 @@ ul {
 
 @media (max-width: 768px) {
   .nav-links {
-    z-index: 1100;
-    pointer-events: none;
     position: absolute;
     top: 60px;
     right: 0;
     background-color: var(--nav-bg);
     flex-direction: column;
-    width: 180px;
+    width: 160px;
     border-radius: 4px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    padding: 0.5rem 0;
+    font-size: 14px;
   }
 
   .nav-links.open {
-    pointer-events: auto;
     max-height: 400px;
   }
 
   .nav-links li {
-    margin: 0.75rem 1rem;
+    margin: 0.5rem 1rem;
   }
 
   .menu-toggle {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    padding: 0.3rem 0.6rem;
   }
 }
+
 
 /* Hero Section */
 .hero {
