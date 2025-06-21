@@ -5,34 +5,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const darkToggle = document.getElementById('dark-mode-toggle');
   const body = document.body;
 
-  // Mobile menu toggle
+  // 📱 Toggle mobile menu
   menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    navLinks.classList.toggle('open');
   });
 
-  // Close mobile menu on link click
+  // 📍 Close menu when a nav link is clicked (for mobile)
   links.forEach(link => {
     link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
+      navLinks.classList.remove('open');
     });
   });
 
-  // Load saved dark mode preference
+  // 🌙 Load saved dark mode state from localStorage
   if (localStorage.getItem('darkMode') === 'enabled') {
-    body.classList.add('dark-mode');
-    darkToggle.textContent = '☀️'; // sun icon
+    body.setAttribute('data-theme', 'dark');
+    darkToggle.textContent = '☀️';
+  } else {
+    body.removeAttribute('data-theme');
+    darkToggle.textContent = '🌙';
   }
 
-  // Dark mode toggle button
+  // 🌗 Dark mode toggle
   darkToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
+    const isDark = body.getAttribute('data-theme') === 'dark';
 
-    if (body.classList.contains('dark-mode')) {
-      localStorage.setItem('darkMode', 'enabled');
-      darkToggle.textContent = '☀️';
-    } else {
+    if (isDark) {
+      body.removeAttribute('data-theme');
       localStorage.setItem('darkMode', 'disabled');
       darkToggle.textContent = '🌙';
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('darkMode', 'enabled');
+      darkToggle.textContent = '☀️';
     }
   });
 });
