@@ -21,7 +21,8 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   text-decoration: underline;
   outline: none;
 }
@@ -40,13 +41,13 @@ ul {
   list-style: none;
 }
 
-/* CSS Variables for brown theme */
+/* CSS Variables for Brown Theme */
 :root {
-  --bg: #f5f0e8;           /* light cream */
-  --text: #4b3b2b;         /* dark brown */
-  --heading: #6b4c3b;      /* medium brown */
-  --link: #a56a44;         /* warm brown/orange */
-  --nav-bg: #d9cbbf;       /* pale brown */
+  --bg: #f5f0e8;
+  --text: #4b3b2b;
+  --heading: #6b4c3b;
+  --link: #a56a44;
+  --nav-bg: #d9cbbf;
   --nav-text: #4b3b2b;
   --btn-bg: #a56a44;
   --btn-text: #f5f0e8;
@@ -54,12 +55,12 @@ ul {
   --footer-text: #4b3b2b;
 }
 
-/* Dark mode for brown theme */
+/* Dark Mode Variables */
 [data-theme="dark"] {
-  --bg: #2f241f;           /* very dark brown */
-  --text: #e6d8c3;         /* light cream */
-  --heading: #deb887;      /* burlywood */
-  --link: #f4a460;         /* sandy brown */
+  --bg: #2f241f;
+  --text: #e6d8c3;
+  --heading: #deb887;
+  --link: #f4a460;
   --nav-bg: #3c2f28;
   --nav-text: #e6d8c3;
   --btn-bg: #f4a460;
@@ -76,7 +77,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -109,34 +110,30 @@ ul {
   outline: none;
 }
 
-#dark-mode-toggle {
+/* Toggle Buttons */
+#dark-mode-toggle,
+.menu-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.3rem;
-  color: var(--nav-text);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
+  font-size: 1.3rem;
+  color: var(--nav-text);
   transition: background-color 0.3s ease;
 }
 
 #dark-mode-toggle:hover,
-#dark-mode-toggle:focus {
+#dark-mode-toggle:focus,
+.menu-toggle:hover,
+.menu-toggle:focus {
   background-color: var(--btn-bg);
   color: var(--btn-text);
-  outline: none;
 }
 
-/* Mobile menu toggle */
+/* Responsive Navbar */
 .menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: var(--nav-text);
-  padding: 0.25rem 0.5rem;
-  user-select: none;
 }
 
 @media (max-width: 768px) {
@@ -150,20 +147,24 @@ ul {
     flex-direction: column;
     width: 180px;
     border-radius: 4px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
   }
+
   .nav-links.open {
     pointer-events: auto;
     max-height: 400px;
   }
+
   .nav-links li {
     margin: 0.75rem 1rem;
   }
+
   .menu-toggle {
     display: block;
+    font-size: 1.8rem;
   }
 }
 
@@ -198,8 +199,10 @@ ul {
 .hero-img {
   flex: 1 1 350px;
   max-width: 600px;
+  width: 100%;
+  height: auto;
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   max-height: 350px;
   object-fit: cover;
   margin-top: 1rem;
@@ -227,13 +230,15 @@ article {
   padding-bottom: 1rem;
 }
 
-.post-content h2, .post-content h3 {
+.post-content h2,
+.post-content h3 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.post-content h2 a, .post-content h3 a {
+.post-content h2 a,
+.post-content h3 a {
   color: var(--link);
   font-weight: 700;
 }
@@ -245,19 +250,12 @@ article {
   margin: 0.3rem 0 0.8rem;
 }
 
-/* Writing icon color */
+/* Writing icon */
 .writing-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
   color: var(--btn-bg);
-}
-
-/* Footer */
-footer {
-  background-color: var(--footer-bg);
-  color: var(--footer-text);
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: auto;
-  font-size: 0.9rem;
 }
 
 /* Fade-in animation */
@@ -273,4 +271,23 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* Lists in posts */
+.blog-post ul,
+.post-content ul,
+section ul:not(.nav-links) {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 }
